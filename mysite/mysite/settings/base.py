@@ -150,9 +150,3 @@ for template_engine in TEMPLATES:
 SECRET_KEY = 'zdj5o%izc51%a20juibqgnd09mcci#lq+ai81!=w%^ccn0qc@_'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-try:
-    from .local import *
-except ImportError:
-    pass
