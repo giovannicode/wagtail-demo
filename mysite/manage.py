@@ -5,7 +5,7 @@ import sys
 import dotenv
 
 if __name__ == "__main__":
-    dotenv.read_dotenv('/app/.env')
+    dotenv.read_dotenv('/app/env_vars')
 
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 

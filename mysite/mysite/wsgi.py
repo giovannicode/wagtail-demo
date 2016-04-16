@@ -13,7 +13,7 @@ import dotenv
 
 from django.core.wsgi import get_wsgi_application
 
-dotenv.read_dotenv('/app/.env')
+dotenv.read_dotenv('/app/env_vars')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
