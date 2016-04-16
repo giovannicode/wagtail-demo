@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASE = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_pscopg2',
-        'NAME': os.environ.get('DATABASE_NAME', 'app_db')
-        'USER': os.environ.get('DATABASE_USER', 'app_user')
-        'PASSWORD': os.environ.get('DATABASE_USER', 'password')
-        'HOST': os.environ.get('DATABASE_HOST', 'localhost')
-        'PORT': os.environ.get('DATABASE_PORT', '')
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_USER'],
+        'HOST': os.environ['DATABASE_HOST'],
+        'PORT': ''
      }
 }
 
