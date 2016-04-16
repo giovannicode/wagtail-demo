@@ -90,12 +90,17 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
+DATABASE = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_pscopg2',
+        'NAME': os.environ.get('DATABASE_NAME', 'app_db')
+        'USER': os.environ.get('DATABASE_USER', 'app_user')
+        'PASSWORD': os.environ.get('DATABASE_USER', 'password')
+        'HOST': os.environ.get('DATABASE_HOST', 'localhost')
+        'PORT': os.environ.get('DATABASE_PORT', '')
+     }
 }
+
 
 
 # Internationalization
@@ -134,3 +139,20 @@ MEDIA_ROOT = '/website/files/media/'
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "mysite"
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ('DEBUG', True) 
+
+for template_engine in TEMPLATES:
+    template_engine['OPTIONS']['debug'] = True
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'zdj5o%izc51%a20juibqgnd09mcci#lq+ai81!=w%^ccn0qc@_'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+try:
+    from .local import *
+except ImportError:
+    pass
