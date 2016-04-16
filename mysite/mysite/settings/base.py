@@ -92,10 +92,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASE = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_pscopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['DATABASE_NAME'],
         'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
         'HOST': os.environ['DATABASE_HOST'],
         'PORT': ''
      }
@@ -141,7 +141,7 @@ MEDIA_ROOT = '/website/files/media/'
 WAGTAIL_SITE_NAME = "mysite"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ('DEBUG', True) 
+DEBUG = os.environ.get('DEBUG', True) 
 
 for template_engine in TEMPLATES:
     template_engine['OPTIONS']['debug'] = True
